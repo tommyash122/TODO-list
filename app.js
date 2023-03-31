@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+mongoose.Promise = global.Promise
 const _ = require("lodash");
 
 const app = express();
@@ -9,9 +10,11 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-
+app.use(express.urlencoded({extended: false}))
 
 mongoose.connect(process.env.MONGO_URI);
+
+mongoose.Promise = global.Promise;
 
 const itemSchema = new mongoose.Schema({
     name: String
