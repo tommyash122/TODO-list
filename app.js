@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: false}))
 
-mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true , useNewUrlParser: true });
 
 mongoose.Promise = global.Promise;
 
