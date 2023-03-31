@@ -10,9 +10,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const password = encodeURIComponent("@#542#9nkM#!9xS");
 
-mongoose.connect("mongodb+srv://tommy122:" + password +"@cluster0.8v8heph.mongodb.net/todolistDB", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGO_URI);
 
 const itemSchema = new mongoose.Schema({
     name: String
@@ -40,6 +39,7 @@ const listSchema = {
 };
 
 const List = mongoose.model("List", listSchema);
+``
 
 app.get("/", function (req, res) {
 
@@ -143,6 +143,6 @@ app.get("/about", function (req, res) {
     res.render("about");
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log("Server started on port 3000");
 });
