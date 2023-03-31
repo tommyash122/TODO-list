@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const password = encodeURIComponent("@#542#9nkM#!9xS");
+
 
 mongoose.connect("mongodb+srv://tommy122:" + password +"@cluster0.8v8heph.mongodb.net/todolistDB", {useNewUrlParser: true});
 
